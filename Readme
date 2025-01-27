@@ -1,0 +1,15 @@
+To build the container, run:
+docker build cross_compiler -t cross_compiler_env
+
+To run the container on windows powershell, run (--rm: kill container if it exists, -i: interactive mode, -t: allocate a terminal to the container):
+docker run --rm -it -v "${pwd}:/root/cc" cross_compiler_env
+
+For linux run:
+docker run --rm -it -v "$(pwd):/root/cc" cross_compiler_env
+
+Once inside the container, simply run make to compile the project.
+
+Outside of the container, if the kernel iso has been compiled, to launch it in qemu run:
+qemu-system-x86_64 -cdrom .\kernel.iso
+
+Don't forget to add qemu folder to the path !
