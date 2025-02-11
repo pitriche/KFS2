@@ -1,15 +1,16 @@
-# KFS1
+# KFS2
 
-KFS1 is a simple operating system kernel written in C and assembly for the x86 architecture. This project demonstrates basic kernel development, including setting up a multiboot-compliant kernel, initializing a terminal, and displaying text on the screen.
+KFS2 is a simple operating system kernel written in C and assembly for the x86 architecture. This project demonstrates basic kernel development, including setting up a multiboot-compliant kernel, initializing a terminal, and displaying text on the screen.
+This part's goal is setting up a Global Descriptor Table and load it into the kernel.
 
 ## Prerequisites
 
-To build and run KFS1, you need the following tools installed:
+To build and run KFS2, you need the following tools installed:
 
 - Docker
 - QEMU
 
-## Building KFS1
+## Building KFS2
 
 1. To build the container, run:
 ```sh
@@ -29,7 +30,7 @@ docker run --rm -it -v "$(pwd):/root/cc" cross_compiler_env
 Once inside the container, simply run make to compile the project.
 
 
-## Running KFS1
+## Running KFS2
 
 Don't forget to add qemu folder to the path !
 
@@ -48,9 +49,11 @@ qemu-system-i386 -cdrom ./kernel.iso
     - [`boot.s`](src/boot.s): Assembly code for the bootloader
     - [`header.s`](src/header.s): Assembly code for the multiboot header
     - [`io.s`](src/io.s): Assembly code for port I/O functions
+    - [`gdt.s`](src/gdt.s): Assembly code for GDT related functions
     - [`kernel.c`](src/kernel.c): C code for the kernel
     - [`printk.c`](src/printk.c): C code for printk function
     - [`cursor.c`](src/cursor.c): C code for cursor resize and repositioning
+    - [`gdt.c`](src/gdt.c): C code for GDT initializing
     - [`linker.ld`](src/linker.ld): Linker script for the kernel
 - [`Makefile`](Makefile): Build script for the project
 - [`grub.cfg`](grub.cfg): GRUB configuration file for booting the kernel
