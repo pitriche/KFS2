@@ -1,0 +1,19 @@
+0xFFFF	-> 16 bits limit																^^ poids faible ^^
+0x0000	-> 16 bits base
+0x00	-> 8 bits base
+0b??	-> 8 bits acces byte ( P | DPL DPL | S | E | DC | RW | A)	<< Poids fort <<					 >> poids faible >>
+	1		-> A	Access
+	?		-> RW	Read/write
+	?		-> DC	Direction conforming												vv poids fort vv
+	?		-> E
+	1		-> S THIS MUST BE 1
+	?		-> DPL : 00 for ring 0 (kernel) or 11 for ring 3 (user)
+	1		-> P
+OxF		-> 4 bits limit
+0b1100	-> 4 bit Flags
+	0		-> Reserved
+	0		-> L : Long mode (1 = 64 bits)
+	1		-> DB : Size flag (1 = 32 bits)
+	1		-> G : granularity
+0x00	-> 8 bits base
+
